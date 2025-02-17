@@ -84,8 +84,10 @@ class Modal {
     constructor() {
         this.aboutModal = document.getElementById('aboutModal');
         this.contactModal = document.getElementById('contactModal');
+        this.wechatModal = document.getElementById('wechatModal');
         this.aboutBtn = document.querySelector('.about-btn');
         this.contactBtn = document.querySelector('.contact-btn');
+        this.wechatBtn = document.getElementById('wechatBtn');
         
         // 获取所有关闭按钮
         const closeButtons = document.querySelectorAll('.close-modal');
@@ -93,6 +95,10 @@ class Modal {
         // 绑定事件
         this.aboutBtn.addEventListener('click', () => this.openModal(this.aboutModal));
         this.contactBtn.addEventListener('click', () => this.openModal(this.contactModal));
+        this.wechatBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.openModal(this.wechatModal);
+        });
         
         // 为所有关闭按钮绑定事件
         closeButtons.forEach(btn => {
@@ -100,7 +106,7 @@ class Modal {
         });
         
         // 点击模态窗口外部关闭
-        [this.aboutModal, this.contactModal].forEach(modal => {
+        [this.aboutModal, this.contactModal, this.wechatModal].forEach(modal => {
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) {
                     this.closeModal();
@@ -119,7 +125,7 @@ class Modal {
     
     closeModal() {
         // 关闭所有模态窗口
-        [this.aboutModal, this.contactModal].forEach(modal => {
+        [this.aboutModal, this.contactModal, this.wechatModal].forEach(modal => {
             modal.classList.remove('show');
         });
         document.body.style.overflow = '';
