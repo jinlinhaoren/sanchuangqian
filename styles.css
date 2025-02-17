@@ -590,8 +590,8 @@ img[loaded] {
 }
 
 .partner-title {
-    color: #000; /* 将颜色改为黑色 */
+    color: #000; /* 将颜色改为纯黑色 */
     margin-bottom: 15px;
-    font-size: 18px; /* 保持一致的字体大小 */
-    font-family: 'Montserrat', sans-serif; /* 使用相同的字体 */
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
 } 
