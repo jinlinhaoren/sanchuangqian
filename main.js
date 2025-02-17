@@ -126,9 +126,45 @@ class Modal {
     }
 }
 
+// 图片加载处理
+class ImageLoader {
+    constructor() {
+        this.images = document.querySelectorAll('img');
+        this.loadImages();
+    }
+    
+    loadImages() {
+        this.images.forEach(img => {
+            if (img.complete) {
+                this.markAsLoaded(img);
+            } else {
+                img.addEventListener('load', () => this.markAsLoaded(img));
+                img.addEventListener('error', () => this.handleError(img));
+            }
+        });
+    }
+    
+    markAsLoaded(img) {
+        img.setAttribute('loaded', '');
+    }
+    
+    handleError(img) {
+        img.style.background = '#f0f0f0';
+        img.style.display = 'flex';
+        img.style.alignItems = 'center';
+        img.style.justifyContent = 'center';
+        img.style.color = '#666';
+        img.style.fontSize = '14px';
+        img.style.padding = '20px';
+        img.style.textAlign = 'center';
+        img.innerHTML = '图片加载失败';
+    }
+}
+
 // 初始化
 document.addEventListener('DOMContentLoaded', () => {
     new Slider();
     new MobileMenu();
     new Modal();
+    new ImageLoader();
 }); 
